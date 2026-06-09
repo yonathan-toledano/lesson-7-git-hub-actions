@@ -1,4 +1,4 @@
-name: Build1 and Push Docker Image
+name: Build and Push Docker Image
 ###################################################################
 # 1. Create DockerHub token before running this!
 # 2. Make sure to pass the right context in "Build and push" step!
