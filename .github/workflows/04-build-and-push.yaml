@@ -1,8 +1,5 @@
-name: Build and Push Docker Image Fix
-###################################################################
-# 1. Create DockerHub token before running this!
-# 2. Make sure to pass the right context in "Build and push" step!
-###################################################################
+name: Build and Push Docker Image
+
 on:
   push:
     branches:
@@ -28,8 +25,7 @@ jobs:
         with:
           context: ./build-and-push
           file: ./build-and-push/Dockerfile
-          # If secrets are missing, push is set to false so the workflow still compiles successfully as a test run!
-          push: ${{ secrets.DOCKERHUB_USERNAME != '' && secrets.DOCKERHUB_TOKEN != '' }}
+          push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME || 'local-test' }}/myimage-ex4:latest
-            ${{ secrets.DOCKERHUB_USERNAME || 'local-test' }}/myimage-ex4:v0.${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/myimage-ex4:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/myimage-ex4:v0.${{ github.run_number }}
